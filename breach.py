@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 import util
+import league
 
 
 def main():
+    print(f"League: {league.league}")
+    print()
+
     upgrade_sets = [
         # [Blessing, original, upgraded],
         [
