@@ -1,16 +1,15 @@
 import requests
 
 
-def get_league(league_type: str) -> str:
+def get_league(league_index: int) -> str:
     response = requests.get("https://poe.ninja/api/data/getindexstate")
-
-    for league in response.json()["economyLeagues"]:
-        if league["url"] == league_type:
-            return league["displayName"]
+    return response.json()["economyLeagues"][league_index]["displayName"]
 
 
 # for more league types
 # see https://poe.ninja/api/data/getindexstate
-league_type = "challenge"
+# the first entry is always SC Temp-league with index 0
+# the second is always HC Temp-league with index 1 and so on
+league_index = 0
 
-league = get_league(league_type)
+league = get_league(league_index)
