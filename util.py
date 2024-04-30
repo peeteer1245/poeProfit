@@ -1,4 +1,3 @@
-import league
 import multiprocessing
 
 try:
@@ -60,8 +59,8 @@ def find_maximum_col_lengths_of_table(table: list, padding=0) -> list:
     return longest_column_length
 
 
-def price_upgrade_sets(upgradeSets: list) -> list:
-    ninjaItems = ninja_get_data(league.league)
+def price_upgrade_sets(upgradeSets: list, league: str) -> list:
+    ninjaItems = ninja_get_data(league)
 
     profitTable = [
         # format:
@@ -96,7 +95,6 @@ def price_upgrade_sets(upgradeSets: list) -> list:
 
 
 def print_upgrade_sets(profitTable: list) -> None:
-
     # sort with best profitability at the top
     _sort = lambda x: x[0]
     profitTable.sort(key=_sort, reverse=True)
@@ -117,10 +115,7 @@ def print_upgrade_sets(profitTable: list) -> None:
     longest_column_length = find_maximum_col_lengths_of_table(profitTable, padding=1)
 
     # inserting the header separator (making a markdown table)
-    profitTable.insert(
-        -1,
-        [((len - 1) * "-") + " " for len in longest_column_length]
-    )
+    profitTable.insert(-1, [((len - 1) * "-") + " " for len in longest_column_length])
 
     # reorder with best profitability at the bottom and the header at the top
     profitTable.reverse()

@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
+import argparse
 import util
 import league
 
 
 def main():
-    print(f"League: {league.league}")
+    parser = argparse.ArgumentParser()
+    league.add_parser_league_arguments(parser)
+    args = parser.parse_args()
+    if args.league_index is None:
+        # set default league to temp softcore
+        args.league_index = 0
+
+    league_name = league.get_league(args.league_index)
+
+    print(f"League: {league_name}")
     print()
 
     upgrade_sets = [
@@ -42,7 +52,7 @@ def main():
         ["Blessing of Xoph", "Xoph's Inception", "Xoph's Nurture"],
     ]
 
-    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets)
+    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets, league)
 
     util.print_upgrade_sets(priced_upgrade_sets)
 
