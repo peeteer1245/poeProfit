@@ -37,7 +37,7 @@ def main():
         ["Vial of the Ghost", "Soul Catcher", "Soul Ripper"],
     ]
 
-    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets, league)
+    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets, league_name)
 
     util.print_upgrade_sets(priced_upgrade_sets)
 

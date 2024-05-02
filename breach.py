@@ -52,7 +52,7 @@ def main():
         ["Blessing of Xoph", "Xoph's Inception", "Xoph's Nurture"],
     ]
 
-    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets, league)
+    priced_upgrade_sets = util.price_upgrade_sets(upgrade_sets, league_name)
 
     util.print_upgrade_sets(priced_upgrade_sets)
 
